@@ -1,0 +1,7 @@
+Flask is what’s known as a WSGI framework. It's pronounced “whiskey” and it stands for ​​Web Server Gateway Interface. 
+Basically, it's a way for web servers to pass requests to web applications or frameworks. 
+Flask relies on the WSGI external library to function, as well as the Jinja2 template engine.
+
+You can use Flask to develop a customized web server from scratch.
+
+To install Flask on pycharm follow this method: https://medium.com/@mushtaque87/flask-in-pycharm-community-edition-c0f68400d91e
