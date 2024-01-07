@@ -24,7 +24,7 @@ The __name__ argument is a special Python variable that represents the name of t
 
 app = Flask(__name__) # Starts the Flask application. The 'app' variable is very important. We'll be using that later.
 
-ROUTE DECORATOR
+ROUTE DECORATOR/URL PATH
 
 You can use a route decorator to map a specific URL path to a function in your application.
 
@@ -49,6 +49,23 @@ def home(): # Subroutine to create the home page
 </html>
 """
   return page # returns the contents of the page variable
+
+STATIC FOLDER
+
+You can create a "folder" or url path by adding a new property to the app = Flask line of code:
+
+app = Flask(__name__, static_url_path="/static")
+
+The static_url_path="/static" parameter sets the URL path where Flask will look for static files such as
+  images, CSS files, or JavaScript files. 
+In this case, it's set to "/static", so any static files within the application would be accessed via URLs 
+  starting with "/static". 
+For example, if you have a file named "style.css" in the static folder, it would be accessible 
+  at "/static/style.css" when the Flask app is running.
+
+Once you've done that, you can access files inside static in your HTML like this:
+
+<img src="static/images/picard.jpg" width = 30%>
 
 END FLASK FILE
 
