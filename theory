@@ -5,3 +5,63 @@ Flask relies on the WSGI external library to function, as well as the Jinja2 tem
 You can use Flask to develop a customized web server from scratch.
 
 To install Flask on pycharm follow this method: https://medium.com/@mushtaque87/flask-in-pycharm-community-edition-c0f68400d91e
+
+IMPORT FLASK
+
+To import flask, do the following
+
+from flask import Flask # Imports the flask library
+
+START FLASK APPLICATION
+
+This line of code initializes a Flask application. 
+The Flask(__name__) line creates an instance of the Flask class, with 
+  __name__ representing the name of the current Python module. 
+This instance is the core of your web application, which you can use to 
+define routes, handle HTTP requests, render templates, and more.
+
+The __name__ argument is a special Python variable that represents the name of the current module. 
+
+app = Flask(__name__) # Starts the Flask application. The 'app' variable is very important. We'll be using that later.
+
+ROUTE DECORATOR
+
+You can use a route decorator to map a specific URL path to a function in your application.
+
+When an user access a route, the function inside it will be executed.
+
+@app.route('/') # Tells the code what to do if we've gone to our web address with just a / after the URL
+
+def index(): # Tells the code which webpage to show. This subroutine will display a "Hello world!" string
+    return 'Hello world!'
+
+@@app.route('/home') # Creates the path to the home page
+def home(): # Subroutine to create the home page
+  # Three quotes followed by the html for your website. Three more quotes to close. All the HTML is assigned to the 'page' variable
+  page = """
+<html>
+  <head>
+    <title>Home page</title>
+  </head>
+  <body>
+    <p>Welcome to the Home page!</p>
+  </body>
+</html>
+"""
+  return page # returns the contents of the page variable
+
+END FLASK FILE
+
+This line of code starts running your Flask application. 
+  The run() function is a method provided by Flask that actually starts the development server so that your 
+  web application can be accessed and interacted with.
+
+The host='0.0.0.0' parameter specifies that the server will listen on all public IP addresses available on 
+  the machine. 
+
+port=81 sets the port number to 81, which means your Flask application will be accessible through port 81 on your machine.
+
+So, when you execute this line of code, your Flask web application starts running, allowing users to 
+  access it through a web browser using the specified IP address and port number.
+
+app.run(host='0.0.0.0', port=81) # This line should ALWAYS come last. It's the line that turns on the Flask server.
