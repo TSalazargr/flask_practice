@@ -1,0 +1,67 @@
+from flask import Flask # Imports the flask library
+
+app = Flask(__name__) # Starts the Flask application
+
+
+@app.route('/') # Tells the code what to do if we've gone to our web address with just a / after the URL
+
+def index(): # Tells the code which webpage to show. This subroutine will display the 'Hello from Flask' page
+    return 'Hello from Flask!'
+
+@app.route('/home') # Creates the path to the home page
+def home(): # Subroutine to create the home page
+  # Three quotes followed by the html for your website. Three more quotes to close. All the HTML is assigned to the 'page' variable
+  page = """
+
+<html>
+    <head>
+        <title>Landing Page</title>
+    </head>
+    <body>
+        <header style="background-color: #ffca3a; text-align:center">
+            <h1 id="ReturnToTop">Teresa's Landing Page</h1>
+            <img src="https://pbs.twimg.com/profile_images/1587851563711795202/Q37gWUU4_400x400.jpg" width="200" style="text-align:center">
+        </header>
+        <main>
+        <section>
+           <p>This is a <em>landing page</em> to practice.</p>
+           <h2>Why a Landing Page?</h2>
+            <p>Landing pages are good for:</p>
+            <ul>
+               <li>Marketing goods of services</li>
+               <li>Showcasing your skills</li>
+               <li>Practicing your coding</li>
+               <li>Trying new things</li>
+               <li>Creating content</li>
+            </ul>
+        </section>
+        <section>
+        <h2>Contact me</h2>
+            <form>
+                <label for="nameContact">Name:</label>
+                <input id="nameContact" type="Text" name="nameContactForm"><br>
+                <label for="emailContact">Email:</label>
+                <input id="emailContact" type="email" name="emailContactForm"><br>
+                <label id="contactContact">Would you like to be contacted?</label>
+                <select id="contactContact">
+                    <option value="yesContactForm">Yes</option>
+                    <option value="noContactForm">No</option>
+                <select><br>
+                <label for="messageContact">Message:</label><br>
+                <textarea id="messageContact" rows = "5" cols = "60" name = "descriptionContactForm">
+                Enter details here...
+                </textarea><br>
+                <input id="submitForm" type="submit" for="submitForm" style="background-color:#ffca3a; border:none; border-radius: 5px" onclick="alert('¡Enviado!')">
+            </form>
+        </section>
+        </main>
+        <footer style="background-color:#ffca3a ; text-align:center">
+            <a href="#ReturnToTop">Return to the top</a>
+        </footer>
+    </body>
+  
+  """
+  
+  return page # returns the contents of the page variable
+
+app.run(host='0.0.0.0', port=81) # This line should ALWAYS come last. It's the line that turns on the Flask server.
