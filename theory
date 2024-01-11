@@ -82,3 +82,44 @@ So, when you execute this line of code, your Flask web application starts runnin
   access it through a web browser using the specified IP address and port number.
 
 app.run(host='0.0.0.0', port=81) # This line should ALWAYS come last. It's the line that turns on the Flask server.
+
+FSTRINGS WITH FLASK
+
+To make a fString inside a Flask file, format the HTML like fString and add the variable in curly braces.
+
+from flask import Flask
+
+import datetime # import the datetime library
+
+app = Flask(__name__, static_url_path="/static")
+
+@app.route('/')
+def index():
+    return 'Hello from Flask!'
+
+@app.route('/home') 
+def home():
+  today = datetime.date.today() # Get today's date
+  page = f"""html 
+  # Format the html as an fString
+  <html>
+    <head>
+      <title>{today}</title>
+    </head>
+    <body>
+    </body>
+  </html>"""
+
+LINKING WITH FLASK
+
+from flask import Flask
+import datetime # import the datetime library
+app = Flask(__name__, static_url_path="/static")
+@app.route('/')
+def index():
+  page = f"""<html><body>
+  <p><a href = "/home">Go home</a></p>
+  </body>
+  </html>"""
+  
+  return page
