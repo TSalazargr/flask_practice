@@ -123,3 +123,24 @@ def index():
   </html>"""
   
   return page
+
+RENDERING HTML TEMPLATES IN FLASK FILES
+
+Pasting the html of your page in the flask file gets tedious (and long) soon.
+
+To avoid that, you can use templates instead.
+
+First, create a folder inside your server. Then, create an html file with your html code and put it in that folder.
+
+Then put that html code in the corresponding function inside your flask file, like this:
+
+@app.route('/')
+def index():
+  page = "" # Empty variable
+  f = open("template/portfolio.html", "r")
+  page = f.read()
+  f.close()
+  return page
+
+
+
