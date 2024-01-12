@@ -83,7 +83,7 @@ So, when you execute this line of code, your Flask web application starts runnin
 
 app.run(host='0.0.0.0', port=81) # This line should ALWAYS come last. It's the line that turns on the Flask server.
 
-FSTRINGS WITH FLASK
+FSTRINGS WITH FLASK AND REPLACE()
 
 To make a fString inside a Flask file, format the HTML like fString and add the variable in curly braces.
 
@@ -109,6 +109,19 @@ def home():
     <body>
     </body>
   </html>"""
+
+You can also use .replace() to replace the text inside your page when the value of a variable:
+
+@app.route('/')
+def index():
+  myName = "Teresa"
+  page = ""
+  f = open("template/portfolio.html", "r")
+  page = f.read()
+  f.close()
+  page = page.replace("{name}", myName) # Replace all instances of {name} with the contents of the 'myName' variable
+  
+  return page
 
 LINKING WITH FLASK
 
@@ -142,5 +155,44 @@ def index():
   f.close()
   return page
 
+HTML TEMPLATES AND REPLACE()
 
+You can use fstrings and .replace() to make webpages out of a template:
+
+@app.route('/portfolio')
+def portfolio():
+  myName = "Teresa"
+  title = "Teresa's portfolio"
+  text = "A portfolio is a great way to showcase your skills."
+  image = "portfolio.png"
+  link = "/home"
+  
+  page = ""
+  f = open("template/portfolio.html", "r")
+  page = f.read()
+  f.close()
+  page.replace("{name}", myName)
+  page.replace("{title}", title)
+  page.replace("{text}", text)
+  page.replace("{image}", image)
+  page.replace("{link}", link)
+  return page
+
+REDIRECTING
+
+Redirecting is useful when you want to send a user to another web address, but that address is really long.
+
+To do so, import the library 'redirect'.
+
+from flask import Flask, redirect
+
+Now I'll add an app route. In this example, I want to redirect users to my page for Day 77. 
+All I put in the subroutine is a return redirect("") with the URL in the quotes.
+
+from flask import Flask, redirect
+@app.route('/77')
+def seventySeven():
+  return redirect("https://replit.com/@DavidAtReplit/Day-077-Solution#main.py")
+  
+  return page # This statement is not reachable or executed because it's after return redirect
 
