@@ -196,3 +196,25 @@ def seventySeven():
   
   return page # This statement is not reachable or executed because it's after return redirect
 
+FORMS 
+
+For a form to work in a flask file, you need to add two things to the <form> html tag:
+
+- A 'post' method: it packages the data in the form and sends it to the web server. 
+- An 'action', which specifies where to send the data
+
+<form method = "post" action = "/process">
+    
+</form>
+
+Inside the form, we'll use the <input> tag to get the user's name. 
+Input tags have several types that specify the sort of data they will collect. 
+In this one, we'll use text. Every input tag must be given an identifier by setting the name property inside the tag.
+
+Next up, we need a 'submit' button.
+
+<form method = "post" action = "/process">
+    <label for="nameContact">Name:</label>
+    <input id="nameContact" type="Text" name="nameContactForm"><br>
+    <input id="submitForm" type="submit" for="submitForm" style="background-color:#ffca3a; border:none; border-radius: 5px" onclick="alert('¡Enviado!')">
+</form>
