@@ -216,5 +216,50 @@ Next up, we need a 'submit' button.
 <form method = "post" action = "/process">
     <label for="nameContact">Name:</label>
     <input id="nameContact" type="Text" name="nameContactForm"><br>
+    <select>
+        <label for="favoriteFood">Favorite food:</label>
+            <option value="tacos">Tacos</option>
+            <option value="pizza">Pizza</option>
+            <option value="pasta">Pasta</option>
+            <option value="broccoli">Broccoli</option>
+    </select>
     <input id="submitForm" type="submit" for="submitForm" style="background-color:#ffca3a; border:none; border-radius: 5px" onclick="alert('¡Enviado!')">
 </form>
+
+To make this work in flask, we have to do the following:
+
+from flask import Flask, request
+
+@app.route('/process', methods=["POST"])
+def process():
+  return request.form
+
+The 'request' library handles incoming HTTP requests.
+
+An HTTP request is a message sent by a client (usually a web browser) to a server, requesting some action to be 
+performed. The server processes the request and sends back a response.
+
+When a client sends a request to a Flask application, the details of that request (such as the HTTP method used, the headers, the 
+form data, query parameters, etc.) are encapsulated in the request object. Developers can then use this object to access and 
+work with the data sent by the client.
+
+@app.route('/process', methods=["POST"]). This specifies that the following function (process) should be called when a POST 
+request is made to the '/process' endpoint.
+
+def process():. This function returns the data received in the form of request.form.
+
+This code will get us the data from the form in a dictionary format, like this:
+
+{"nameContact": "Teresa"}
+
+You can add more things to the process() subroutine, for example:
+
+def process():
+  page = ""
+  form = request.form
+  if form["favoriteFood"] != "broccoli":
+    page += f"Sounds delicious, {form['nameContact']}"
+  else:
+    page += f"Ewww, your taste is terrible, {form['username']}!"
+  return page
+
